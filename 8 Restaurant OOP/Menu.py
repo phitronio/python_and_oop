@@ -40,7 +40,7 @@ class Menu:
 
     def remove_pizza(self, pizza):
         if pizza in self.pizzas:
-            self.pizzas.remote(pizza)
+            self.pizzas.remove(pizza)
 
     def show_menu(self):
         for pizza in self.pizzas:

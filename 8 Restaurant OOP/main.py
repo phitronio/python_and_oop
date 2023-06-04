@@ -1,6 +1,7 @@
 from Menu import Pizza, Burger, Drinks, Menu
 from Restaurant import Restaurant
 from Users import Chef, Customer, Server, Manager
+from Order import Order
 
 def main():
     menu = Menu()
@@ -24,7 +25,7 @@ def main():
     menu.add_menu_item('drinks', coffee)
 
     # show Menu
-    menu.show_menu()
+    # menu.show_menu()
 
     restaurant = Restaurant('Sai Baba Restaurant', 2000, menu)
 
@@ -37,9 +38,34 @@ def main():
     restaurant.add_employee('server', server)
 
     # show employees
-    restaurant.show_employees()
+    # restaurant.show_employees()
 
+    # customer 1 placing an order
+    customer_1 = Customer('Sakib Khan', 6, 'king@khan.com', "banani", 100000)
+    order_1 = Order(customer_1, [pizza_3, coke, burger_1, pizza_3, coffee])
+    customer_1.pay_for_order(order_1)
+    restaurant.add_order(order_1)
+    # customer one paying for order_1
+    restaurant.receive_payment(order_1, 20000, customer_1)
 
+    print('revenue and balance after first customer', restaurant.revenue, restaurant.balance)
+
+    # customer 2 placing an order
+    customer_2 = Customer('Sakib Al Hasan', 6, 'king@khan.com', "banani", 100000)
+    order_2 = Order(customer_2, [pizza_1, burger_2, burger_1, pizza_2, coffee])
+    customer_2.pay_for_order(order_2)
+    restaurant.add_order(order_2)
+    # customer one paying for order_1
+    restaurant.receive_payment(order_2, 10000, customer_2)
+
+    print('revenue and balance after second customer', restaurant.revenue, restaurant.balance)
+
+    # pay rent
+    restaurant.pay_expense(restaurant.rent, 'Rent')
+    print('after rent', restaurant.revenue, restaurant.balance, restaurant.expense)
+
+    restaurant.pay_salary(chef)
+    print('after salary', restaurant.revenue, restaurant.balance, restaurant.expense)
 
 
 
