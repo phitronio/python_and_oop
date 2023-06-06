@@ -32,6 +32,12 @@ class School:
         print('------subjects------')
         for subject in eight.subjects:
             print(subject.name, subject.teacher.name)
+
+        print('----Student Exam Marks-------')
+        for student in eight.students:
+            for key, value in student.marks.items():
+                print(student.name, key, value)
+            print('----student end----')
         return ''
             
 
@@ -50,6 +56,10 @@ class ClassRoom:
     def add_subject(self, subject):
         self.subjects.append(subject)
 
+    def take_semester_final(self):
+        for subject in self.subjects:
+            subject.exam(self.students)
+
     def __str__(self) -> str:
         return f'{self.name}-{len(self.students)}'
     
@@ -64,3 +74,8 @@ class Subject:
         self.teacher = teacher
         self.max_marks = 100
         self.pass_marks = 30
+    
+    def exam(self, students):
+        for student in students:
+            mark = self.teacher.evaluate_exam()
+            student.marks[self.name] = mark

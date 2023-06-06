@@ -32,6 +32,9 @@ def main():
     biology = Subject('biology', biology_teacher)
     eight.add_subject(biology)
 
+    eight.take_semester_final()
+
+
     print(school)
 
 if __name__ == '__main__':
