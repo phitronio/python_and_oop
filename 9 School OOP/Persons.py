@@ -1,5 +1,6 @@
-import random
 from School import School
+import secrets
+
 class Person:
     def __init__(self, name) -> None:
         self.name = name
@@ -17,7 +18,7 @@ class Teacher(Person):
         return f'{self.name}'
     
     def evaluate_exam(self):
-        marks = random.randint(0,100)
+        marks = secrets.SystemRandom().randint(0,100)
         return marks
 
 class Student(Person):
